@@ -1,0 +1,34 @@
+[project]
+name = "videobot"
+version = "0.1.0"
+description = "Turn short stories into narrated, captioned vertical videos. Local, free voices, no video library required."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE", "src/videobot/fonts/OFL.txt"]
+authors = [{ name = "Julian Hilg" }]
+requires-python = ">=3.11"
+dependencies = [
+    "autcaptions",
+    "edge-tts>=7",
+    "pillow>=10",
+]
+
+[project.optional-dependencies]
+ui = ["gradio>=5"]
+polly = ["boto3>=1.34"]
+
+[project.scripts]
+videobot = "videobot.cli:main"
+
+[dependency-groups]
+dev = ["pytest>=8"]
+
+[tool.uv.sources]
+autcaptions = { git = "https://github.com/julian-hilg/autcaptions" }
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/videobot"]

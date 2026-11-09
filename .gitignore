@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+dist/
+build/
+.DS_Store
+# local test output
+output/
+*.mp4
+!docs/*.mp4
